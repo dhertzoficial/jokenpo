@@ -8,10 +8,9 @@ def cabecalho():
     print("You have to choose: Rock(R), Paper(P) or Scissors(S).")
     print(Fore.CYAN + "=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n" + Style.RESET_ALL)
 
-# p1 = input("Qual nome do player 1: ")
-# p2 = input("Qual nome do player 2: ")
-p1 = "Dani"
-p2 = "Gisi"
+p1 = input("Qual nome do player 1: ")
+p2 = input("Qual nome do player 2: ")
+
 vencedor = ''
 qtde_p1 = 0
 qtde_p2 = 0
@@ -73,10 +72,8 @@ def possibilidades():
 cabecalho()
 
 while True:
-    #p1_choice = input(f"{p1} voce escolhe R, P or S?").upper()
-    p1_choice = "R"
-    # p2_choice = input(f"{p2} voce escolhe R, P or S?").upper()
-    p2_choice = "P"
+    p1_choice = input(f"{p1} voce escolhe R, P or S?").upper()
+    p2_choice = input(f"{p2} voce escolhe R, P or S?").upper()
     possibilidades()
     full_name()
     print(f"\n{p1} escolheu {p1_choice} e {p2} escolheu {p2_choice}\n")
