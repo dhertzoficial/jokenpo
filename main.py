@@ -2,27 +2,29 @@ from colorama import init, Fore, Style
 
 init()
 
-def cabecalho():
+def header():
     print(Fore.CYAN + "\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=" + Style.RESET_ALL)
     print("This is the game called JOKENPO. Or Rock, Paper or Scissors.")
     print("You have to choose: Rock(R), Paper(P) or Scissors(S).")
     print(Fore.CYAN + "=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n" + Style.RESET_ALL)
 
-p1 = input("Qual nome do player 1: ")
-p2 = input("Qual nome do player 2: ")
+header()
 
-vencedor = ''
-qtde_p1 = 0
-qtde_p2 = 0
-qtde_draw = 0
+p1 = input("What is the player 1 name: ")
+p2 = input("What is the player 2 name: ")
+
+winner = ''
+qty_p1 = 0
+qty_p2 = 0
+qty_draw = 0
 
 print(f"\nplayer 1 = {p1}")
-print(f"player 2 = {p2}")
+print(f"player 2 = {p2}\n")
 
 def next_round():
     print("\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=")
-    print("PROXIMA RODADA")
-    print("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=")
+    print("NEXT ROUND")
+    print("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n")
 
 def full_name():
     global p1_choice
@@ -34,7 +36,7 @@ def full_name():
     elif p1_choice.upper() == "S":
         p1_choice = Fore.RED + "Scissors" + Style.RESET_ALL
     else:
-        print("Encontramos um erro. Provavelmente voce digitou algo diferente de R, P ou S")
+        print("We found an error. You probably typed something other than R, P or S")
     if p2_choice.upper() == "R":
         p2_choice = Fore.BLUE + "RocK" + Style.RESET_ALL
     elif p2_choice.upper() == "P":
@@ -42,59 +44,59 @@ def full_name():
     elif p2_choice.upper() == "S":
         p2_choice = Fore.BLUE + "Scissors" + Style.RESET_ALL
     else:
-        print("Encontramos um erro. Provavelmente voce digitou algo diferente de R, P ou S")
+        print("We found an error. You probably typed something other than R, P or S")
 
 
-def possibilidades():
+def possibilities():
     global p1
     global p2
-    global vencedor
+    global winner
     if p1_choice == "R" and p2_choice == "R":
-        vencedor = "Empate"
+        winner = "Draw"
     elif p1_choice == 'R' and p2_choice == "P":
-        vencedor = p2
+        winner = p2
     elif p1_choice == 'R' and p2_choice == "S":
-        vencedor = p1
+        winner = p1
     elif p1_choice == 'P' and p2_choice == "R":
-        vencedor = p1
+        winner = p1
     elif p1_choice == 'P' and p2_choice == "P":
-        vencedor = "Empate"
+        winner = "Draw"
     elif p1_choice == 'P' and p2_choice == "S":
-        vencedor = p2
+        winner = p2
     elif p1_choice == 'S' and p2_choice == "R":
-        vencedor = p2
+        winner = p2
     elif p1_choice == 'S' and p2_choice == "P":
-        vencedor = p1
+        winner = p1
     elif p1_choice == 'S' and p2_choice == "S":
-        vencedor = "Empate"
+        winner = "Draw"
     
 
-cabecalho()
+
 
 while True:
-    p1_choice = input(f"{p1} voce escolhe R, P or S?").upper()
-    p2_choice = input(f"{p2} voce escolhe R, P or S?").upper()
-    possibilidades()
+    p1_choice = input(f"{p1}, you choose R, P or S? ").upper()
+    p2_choice = input(f"{p2}, you choose R, P or S? ").upper()
+    possibilities()
     full_name()
-    print(f"\n{p1} escolheu {p1_choice} e {p2} escolheu {p2_choice}\n")
-    print(Fore.GREEN + f"###  O vencedor foi: {F" ### {vencedor} ###"}\n" + Style.RESET_ALL)
+    print(f"\n{p1} chose {p1_choice} e {p2} chose {p2_choice}\n")
+    print(Fore.GREEN + f"###  the winner was: {F" ### {winner} ###"}\n" + Style.RESET_ALL)
 
-    # QUANTIDADE DE VEZES QUE CADA PLAYER GANHOU
-    if vencedor == p1:
-        qtde_p1 += 1
-    elif vencedor == p2:
-        qtde_p2 += 1
-    elif vencedor == "Empate":
-        qtde_draw += 1
+    # NUMBER OF TIMES EACH PLAYER WON
+    if winner == p1:
+        qty_p1 += 1
+    elif winner == p2:
+        qty_p2 += 1
+    elif winner == "Draw":
+        qty_draw += 1
 
-    # ESCOLHER SE DESEJA CONTINUAR O JOGO OU PARAR
-    continuar = input("Pressione Enter para continuar ou digite Q para sair do jogo: ")
-    if continuar == "Q" or continuar == 'q':
-        print("Voce escolheu sair do jogo. Obrigado e ate logo\n")
-        print("RESULTADOS DO JOGO:\n")
+    # CHOOSE IF YOU WANT TO CONTINUE THE GAME OR STOP
+    to_continue = input("press Enter to continue or press Q to quit the game: ")
+    if to_continue == "Q" or to_continue == 'q':
+        print("you chooseu quit the game. Thank you and see you soon\n")
+        print("GAME RESULTS:\n")
     
-        print(f"{p1} ganhou {qtde_p1} vezes, {p2} ganhou {qtde_p2} vezes e aconteceram {qtde_draw} empates.")
+        print(f"{p1} won {qty_p1} time(s), {p2} won {qty_p2} time(s) and there were {qty_draw} draw(s).\n")
         break
     else:
-        print("Voce escolheu continuar")
+        print("you chooseu to_continue")
     next_round()
